@@ -15,6 +15,9 @@ class ProfileSerializer(serializers.ModelSerializer):
 
 
 class InviteCodeSerializer(serializers.ModelSerializer):
+    code = serializers.CharField(read_only=True)
+    used_by = serializers.CharField(read_only=True)
+
     class Meta:
         model = InviteCode
-        fields = '__all__'
+#       fields = '__all__'

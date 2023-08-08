@@ -15,10 +15,12 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.urls import path
-from phone_auth.views import phone_auth, profile, inviter_list
+
+# from Task import phone_auth
+#from Task.phone_auth.views import inviter_list
 
 urlpatterns = [
-    path('api/phone-auth/', phone_auth),
-    path('api/profile/', profile),
-    path('api/inviter-list/', inviter_list),
+#     path('api/phone-auth/', phone_auth),
+#     path('api/profile/', profile),
+#     path('api/inviter-list/', inviter_list),
 ]
