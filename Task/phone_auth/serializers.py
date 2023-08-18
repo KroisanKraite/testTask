@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Profile, InviteCode
+from .models import Profile, InviteCode, InviterList
 
 
 class ProfileSerializer(serializers.ModelSerializer):
@@ -21,3 +21,11 @@ class InviteCodeSerializer(serializers.ModelSerializer):
     class Meta:
         model = InviteCode
 #       fields = '__all__'
+
+
+class InviteListSerializer(serializers.ModelSerializer):
+    inviter_list = serializers.CharField(read_only=True)
+
+    class Meta:
+        model = InviterList
+        fields = '__all__'

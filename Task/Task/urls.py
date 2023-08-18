@@ -14,13 +14,16 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+import profile
 from django.urls import path
+from Task.phone_auth.views import inviter_list, post_profile, get_profile, register, new_code, check_code
 
-# from Task import phone_auth
-#from Task.phone_auth.views import inviter_list
 
 urlpatterns = [
-#     path('api/phone-auth/', phone_auth),
-#     path('api/profile/', profile),
-#     path('api/inviter-list/', inviter_list),
+    path('api/phone_auth/', register),
+    path('api/phone_auth/', new_code),
+    path('api/phone_auth/', check_code),
+    path('api/profile/', get_profile),
+    path('api/profile/', post_profile),
+    path('api/inviter-list/', inviter_list),
 ]

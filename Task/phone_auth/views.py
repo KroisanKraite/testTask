@@ -6,8 +6,8 @@ from rest_framework.authentication import SessionAuthentication, BasicAuthentica
 from rest_framework.decorators import api_view, authentication_classes, permission_classes
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
-from .models import Profile, InviteCode
-from .serializers import ProfileSerializer, InviteCodeSerializer
+from .models import Profile, InviteCode, InviterList
+from .serializers import ProfileSerializer, InviteCodeSerializer, InviterList
 
 
 @api_view(['POST'])
@@ -81,7 +81,7 @@ def inviter_list(request):
         phone_number = request.GET.get('phone_number')
         if Profile.objects.filter(phone_number=phone_number).exists():
             user = Profile.objects.get(user=request.user)
-            inviter_list = Profile.objects.filter(used_invite_codes__used_by=user).values_list('phone_number', flat=True)
+            inviter_list= Profile.objects.filter(used_invite_codes__used_by=user).values_list('phone_number', flat=True)
             return Response({'inviter_list': list(inviter_list)}, status=status.HTTP_200_OK)
         else:
             return Response({'message': 'User does not exist'}, status=status.HTTP_404_NOT_FOUND)

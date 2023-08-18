@@ -13,3 +13,7 @@ class Profile(models.Model):
 class InviteCode(models.Model):
     code = models.CharField(max_length=6)
     used_by = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, related_name='used_invite_codes')
+
+
+class InviterList(models.Model):
+    inviter_list = models.TextField()
